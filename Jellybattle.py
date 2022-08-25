@@ -105,31 +105,4 @@ while player_1.health > 0 and jelly_1.health > 0:
   else: 
     player_1.death() or jelly_1.victory()
     break
-
-
-    
-    
-    
-    
-
-
-    
-
-      
-      
-      
-    
-    
-    
-                 
-
-
-    
-    
-    
-
-
-
-
-
     
