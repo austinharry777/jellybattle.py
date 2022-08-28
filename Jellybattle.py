@@ -3,10 +3,11 @@ import time
 
 class Player:
 # To create a player instance, give the input for name.
-  def __init__(self, name, health=50):
+  def __init__(self, name, flee_chance=False, health=50):
     self.name = name
     self.health = health
     self.is_dead = False
+    self.flee_chance = flee_chance
 
   def __repr__(self):
     # Printing a character will tell you the character's name and how much health they have left.
@@ -21,7 +22,23 @@ class Player:
                  Y   O   O U   U    D   D   I   EEE   D   D
                  Y   O   O U   U    D   D   I   E     D   D
                  Y    OOO   UUU     DDDD  IIIII EEEEE DDDD  """)
-  
+
+  def flee(self):
+  # Generates a random number and gives the player a 25% chance of escaping the battle
+    if random.randint(1,4) == 1:
+      self.flee_chance = True
+      print("""
+      
+               Y   Y  OOO  U   U    RRRR    A   N   N
+                Y Y  O   O U   U    R   R  A A  NN  N
+                 Y   O   O U   U    RRRR  AAAAA N N N   
+                 Y   O   O U   U    R  R  A   A N  NN
+                 Y    OOO   UUU     R   R A   A N   N   
+                 
+                 (And they laughed at you...)   """)
+    else:
+      print("""You tripped on a rock!""")
+    
   def lose_health(self, amount):
   # Deducts health from a character and prints the health remaining.
     self.health -= amount
@@ -101,8 +118,15 @@ while player_1.health > 0 and jelly_1.health > 0:
       time.sleep(0.5)
   elif choice == "run":
     time.sleep(0.5)
-    print("They're all gonna laugh at you if you run!")
+    player_1.flee()
+    if player_1.flee_chance == True:
+      break
+    if jelly_1.health > 0:
+      time.sleep(0.5)
+      jelly_1.attack(player_1)
+      time.sleep(0.5)
+
   else: 
     player_1.death() or jelly_1.victory()
     break
-    
+ 
