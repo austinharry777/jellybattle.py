@@ -35,9 +35,25 @@ class Player:
                  Y   O   O U   U    R  R  A   A N  NN
                  Y    OOO   UUU     R   R A   A N   N   
                  
-                 (And they laughed at you...)   """)
+                 (And they laughed at you...:)   """)
     else:
       print("""You tripped on a rock!""")
+
+  def make_friends(self):
+    #Easter egg, secret option to end the game with some dialogue.
+    print("""You ask the Jelly how it is doing today. 
+            The Jelly has a lot on it's mind, such as what is the purpose of life
+            and the existential crises the Jelly faces. 
+            The Jelly tells you about it's family and how it never 
+            has time to do the things it wants to get done.
+            You can relate to the Jelly.  It turns out you and the Jelly have a lot of interests in common,
+            such as art, music, sports, and academic pursuits. 
+            You and the Jelly exchange numbers and friend each other on the various social media platforms.  
+            As you realize we all have our struggles, you bid farewell to the Jelly 
+            and wish it the best in it's Jelly life.
+            YOU MAKE FRIENDS WITH THE JELLY. 
+            
+            Thank you for playing!.....:)""")
     
   def lose_health(self, amount):
   # Deducts health from a character and prints the health remaining.
@@ -55,13 +71,19 @@ class Player:
 
 class Jelly:
 # The Jelly instance is automatically created upon program initiation.
-  def __init__(self, health = 40):
+  def __init__(self, element=None, health = 40):
     self.health = health
+    self.element = element
     self.is_dead = False
   
   def __repr__(self):
     # Printing a jelly will tell you how much health the jelly has left.
     return "The Jelly has {health} HP remaining.".format(health = self.health)
+
+  def select_element(self):
+    list_of_elements = ["Fire", "Water", "Wind", "Earth"]
+    self.element = random.choice(list_of_elements)
+
   
   def lose_health(self, amount):
   # Deducts health from a jelly and prints the health remaining
@@ -74,7 +96,7 @@ class Jelly:
   def attack(self, player):
   # Selects a random number from range 5-15 and uses the value in the lose_health function.
     damage = random.randint(5,15)
-    print("The Jelly attacks! {name} suffers {damage} HP damage.".format(name=player.name, damage=damage))
+    print("The {element} Jelly attacks! {name} suffers {damage} HP damage.".format(element=self.element, name=player.name, damage=damage))
     player.lose_health(damage)
   
   def victory(self):
@@ -94,6 +116,9 @@ print("Hello " + str(player_one_name) + "! It is time to begin. You are wanderin
 # Creating instances
 player_1 = Player(player_one_name)
 jelly_1 = Jelly()
+jelly_1.select_element()
+
+print("It appears to be a {element} Jelly.".format(element=jelly_1.element))
 
 # Main game loop
 while player_1.health > 0 and jelly_1.health > 0:
@@ -104,9 +129,7 @@ while player_1.health > 0 and jelly_1.health > 0:
   # Easter Egg, secret ending
   elif choice == "make friends":
     time.sleep(1)
-    print("""You ask the Jelly how it is doing today. The Jelly has a lot on it's mind, such as what is the purpose of life and the existential crises the Jelly faces. The Jelly tells you about it's family and how it never has time to do the things it wants to get done. You can relate to the Jelly.  It turns out you and the Jelly have a lot of interests in common, such as art, music, sports, and academic pursuits. You and the Jelly exchange numbers and friend each other on the various social media platforms.  As you realize we all have our struggles, you bid farewell to the Jelly and wish it the best in it's Jelly life. YOU MAKE FRIENDS WITH THE JELLY. 
-    
-    THANK YOU FOR PLAYING!""")
+    player_1.make_friends()
     break
   elif choice == "attack":
     time.sleep(0.5)
