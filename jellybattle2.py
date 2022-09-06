@@ -608,30 +608,4 @@ foyer_case_knife = True
 kitchen_counter = 0
 kitchen_potion = True 
 dungeon_cave()
-
-
-
-
-
-
-
-
-item_list = ['sword', 'ring', 'none']
-item_choice = input("\nYou look at the nearby table and see a sword and a ring on the table. \nYou decide to pick one of the items up.\nWhich one do you grab?\nPlease type 'sword', 'ring', or 'I don't need a crutch. I'm taking this jelly on barehanded!'(just type 'none' in that case).")
-while item_choice not in item_list:
-  item_choice = input("Ha Ha, you're funny. Sorry, that's not an available option. Please type 'sword', 'ring', or 'none'."  )
-if item_choice == 'sword':
-  player_1.sword = True
-  print("You picked up the Butterknife of Truth! Time to spread some jelly!")
-if item_choice == 'ring':
-  player_1.ring = True
-  print("You picked up the Ring of Defense!")
-if item_choice == 'none':
-  player_1.ring == False
-
-# Main game loop
-
-        
-    
-        
  
