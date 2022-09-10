@@ -471,20 +471,6 @@ class BossJelly:
       print("See if you can find the other endings!")
       quit()
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Setting up room functions for movement and game progression
 def dungeon_cave_potion_in_room():
     global dungeon_cave_potion
@@ -798,7 +784,6 @@ def kitchen_potion_in_room():
         player_1.potions += 0
         print(f"{player_1.name} now has {player_1.potions} potions.")
         time.sleep(2)
-
 
 def kitchen():
     global jelly_1
@@ -1172,7 +1157,6 @@ def battle_loop():
                 jelly_1.attack(player_1)
                 time.sleep(0.5)
 
-       
 def boss_loop_no_hero():
   boss_counter = 0
   celestial_counter = 4
@@ -1335,9 +1319,6 @@ def boss_loop_hero():
                 print(f"The Ancient Jelly is readying Celestial Doom...in {celestial_counter}...")
 
   
-
-  
-
 # Naming the player and initiating "Escape from Jelly Castle" 
 player_one_name = input("Welcome to the world of JellyBattle! Please type your character name then press enter.  ")
 time.sleep(0.5)
